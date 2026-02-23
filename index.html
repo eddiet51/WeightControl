@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>WeightTracker - 51歲減重之路</title>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="plan.js"></script>
+</head>
+
+<body>
+    <div class="glass-container">
+        <header>
+            <h1>減重追蹤 <span class="highlight">WeightTracker</span></h1>
+            <p class="subtitle">目標：78kg → 70kg | 51歲挑戰</p>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Summary Cards -->
+            <section
+                class="card summary-card"
+                id="summary-bmi"
+            >
+                <div class="card-icon">📏</div>
+                <div class="card-info">
+                    <h3>當前 BMI</h3>
+                    <p
+                        class="value"
+                        id="current-bmi"
+                    >--</p>
+                    <p
+                        class="status"
+                        id="bmi-status"
+                    >計算中...</p>
+                </div>
+            </section>
+
+            <section
+                class="card summary-card"
+                id="summary-weight"
+            >
+                <div class="card-icon">⚖️</div>
+                <div class="card-info">
+                    <h3>當前體重</h3>
+                    <p
+                        class="value"
+                        id="current-weight"
+                    >-- kg</p>
+                    <p
+                        class="status"
+                        id="weight-diff"
+                    >距目標還差 -- kg</p>
+                </div>
+            </section>
+
+            <section
+                class="card summary-card"
+                id="summary-adherence"
+            >
+                <div class="card-icon">🏆</div>
+                <div class="card-info">
+                    <h3>計畫執行力</h3>
+                    <p
+                        class="value"
+                        id="adherence-rate"
+                    >0%</p>
+                    <p class="status">本月達成率</p>
+                </div>
+                <div class="adherence-chart-mini">
+                    <canvas id="adherenceChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Today's Plan Section -->
+            <section class="card plan-card">
+                <div class="plan-header">
+                    <h3>📅 今日計畫 <span id="plan-day-label">(第1週 第1天)</span></h3>
+                    <span class="tag-workday">週一至週五專屬</span>
+                </div>
+                <div id="today-plan-content">
+                    <ul class="checklist">
+                        <li><input
+                                type="checkbox"
+                                id="chk-breakfast"
+                            > 早餐：<span id="plan-b">--</span></li>
+                        <li><input
+                                type="checkbox"
+                                id="chk-lunch"
+                            > 午餐：<span id="plan-l">--</span></li>
+                        <li><input
+                                type="checkbox"
+                                id="chk-dinner"
+                            > 晚餐：<span id="plan-d">--</span></li>
+                        <li><input
+                                type="checkbox"
+                                id="chk-exercise"
+                            > 運動：<span id="plan-e">--</span></li>
+                    </ul>
+                </div>
+                <p
+                    id="weekend-msg"
+                    class="hidden"
+                >週末彈性日！請遵循「八二原則」。</p>
+            </section>
+
+            <!-- Chart Section -->
+            <section class="card chart-card">
+                <h3>體重趨勢圖</h3>
+                <div class="chart-container">
+                    <canvas id="weightChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Input Form Section -->
+            <section class="card form-card">
+                <h3>新增紀錄</h3>
+                <form id="record-form">
+                    <div class="input-group">
+                        <label for="date-input">日期</label>
+                        <input
+                            type="date"
+                            id="date-input"
+                            required
+                        >
+                    </div>
+                    <div class="input-group">
+                        <label for="weight-input">體重 (kg)</label>
+                        <input
+                            type="number"
+                            id="weight-input"
+                            step="0.1"
+                            placeholder="78.0"
+                            required
+                        >
+                    </div>
+                    <div class="input-group">
+                        <label for="cal-input">攝取熱量 (kcal)</label>
+                        <input
+                            type="number"
+                            id="cal-input"
+                            placeholder="1500"
+                            required
+                        >
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >保存紀錄</button>
+                </form>
+            </section>
+
+            <!-- History List Section -->
+            <section class="card history-card">
+                <div class="history-header">
+                    <h3>歷史紀錄</h3>
+                    <button
+                        id="export-btn"
+                        class="btn-secondary"
+                    >匯出 JSON</button>
+                </div>
+                <ul
+                    id="history-list"
+                    class="styled-list"
+                >
+                    <!-- Dynamic Items -->
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 Antigravity 減重日誌助理</p>
+        </footer>
+    </div>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
