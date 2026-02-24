@@ -308,33 +308,36 @@ footer {
     font-size: 0.85rem;
 }
 
-/* Responsive */
+/* Mobile Optimization */
 @media (max-width: 992px) {
     .dashboard-grid {
         grid-template-columns: 1fr 1fr;
     }
-
-    .chart-card {
-        grid-column: span 2;
-    }
-
-    .history-card {
-        grid-column: span 2;
-    }
+    .chart-card { grid-column: span 2; }
+    .history-card { grid-column: span 2; }
 }
 
 @media (max-width: 600px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
+    .chart-card, .form-card, .history-card, .plan-card { grid-column: span 1; }
+    .glass-container { padding: 20px 16px; border-radius: 0; }
 
-    .chart-card,
-    .form-card,
-    .history-card {
-        grid-column: span 1;
-    }
+    h1 { font-size: 1.8rem; }
+    .subtitle { font-size: 0.95rem; }
 
-    .glass-container {
-        padding: 20px;
+    .card { padding: 18px; }
+    .card-icon { width: 50px; height: 50px; font-size: 2rem; }
+    .card-info .value { font-size: 1.5rem; }
+
+    .checklist { grid-template-columns: 1fr; }
+    .checklist li { padding: 14px; font-size: 0.95rem; }
+
+    input, .btn-primary {
+        padding: 14px;
+        font-size: 1rem;
+        min-height: 48px; /* Touch target safety */
     }
 }

@@ -1,0 +1,17 @@
+{
+  "name": "WeightTracker",
+  "short_name": "Weight",
+  "description": "51歲減重追蹤與計畫小助手",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#38bdf8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3373/3373122.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
